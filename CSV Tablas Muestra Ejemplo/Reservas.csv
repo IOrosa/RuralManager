@@ -1,0 +1,22 @@
+Identificador,Nombre,Apellidos,Telefono,CodigoPostal,Email,Apartamento,Personas,Checkin,Checkout,Notas,Importe,NumeroTarjeta,FechaCaducidadTarjeta,Pagado,FacturaAsociada
+1,Ivan,"Orosa Gilarranz","+34 650510144",40109,ivanorosagilarranz@gmail.com,8,4,2022-04-15,2022-04-21,1,140,4550544223304332,25/02,1,2
+2,Ivan,"Orosa Gilarranz","+34 650510144",40109,ivanorosagilarranz@gmail.com,1,4,2022-04-28,2022-05-05,,140,4550544223304332,25/02,1,2
+3,Ivan,"Orosa Gilarranz","+34 650510144",40109,ivanorosagilarranz@gmail.com,0,4,2022-04-28,2022-05-02,,145,4550544223304332,25/02,1,1
+5,Katrina,Collins,995-3530,40109,katrina.collins@example.com,2,4,2022-04-29,2022-05-05,,180,0,0,1,3
+6,Claire,Bishop,731-6742,40109,claire.bishop@example.com,3,4,2022-04-25,2022-05-04,,150,0,0,1,1
+7,Sebastian,Kelley,617-3133,40109,sebastian.kelley@example.com,5,4,2022-05-02,2022-05-08,,479,0,0,1,5
+8,Lois,Brooks,738-4243,40109,lois.brooks@example.com,7,6,2022-04-27,2022-05-03,,240,0,0,0,-1
+9,Larry,Schmidt,245-2123,40109,larry.scmidt@example.com,11,4,2022-05-04,2022-05-12,,240,0,0,0,-1
+10,Jean,Patterson,583-2321,40109,jean.patterson@example.com,8,4,2022-05-04,2022-05-09,,220,0,0,1,4
+11,Elpidia,"Olivarez Badillo",643298123,41590,elpidia.olivarez@example.com,0,4,2022-05-13,2022-05-17,,340,0,0,0,-1
+13,Ludovico,Corona,627319274,6510,ludovico.corona@example.com,1,4,2022-05-15,2022-05-24,,160,8273545328172632,25/09,0,-1
+14,Eliora,Pichardo,638162341,11500,eliora.pichardo@example.com,2,7,2022-05-11,2022-05-19,,400,0,0,1,-1
+15,Narella,Olivera,647927412,20215,narella.olivera@example.com,3,5,2022-05-15,2022-05-26,,210,0,0,0,-1
+16,Adassa,Castaneda,683728125,37863,adassa.castaneda@example.com,4,6,2022-05-19,2022-05-26,,540,0,0,1,-1
+17,Dafna,Cantá,679275123,17244,dafna.cantu@example.com,6,7,2022-05-13,2022-05-18,,220.5,0,0,1,6
+18,Afrodisio,Hernandes,682746142,3725,afrodisio.hernandes@example.com,9,7,2022-05-15,2022-05-19,,160,0,0,1,6
+19,Nadal,Granados,638721425,12570,nadal.granados@example.com,8,6,2022-05-13,2022-05-17,,340,0,0,0,-1
+20,Ramses,Barrios,648918241,27320,ramses.barrios@example.com,8,5,2022-05-19,2022-05-24,,350,0,0,0,-1
+21,Araceli,Alcantar,647291842,50298,araceli.alcantar@example.com,5,6,2022-05-13,2022-05-17,,120,0,0,1,6
+22,Isaldina,Molina,647280162,14815,isaldina.molina@example.com,7,6,2022-05-15,2022-05-19,,320,,,0,-1
+23,Nubar,Palacios,647291827,31550,nubar.palacios@example.com,6,6,2022-05-24,2022-05-30,,240,4716150173486515,09/25,1,7
