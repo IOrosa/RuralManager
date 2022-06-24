@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(panelPrincipal));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnPromociones = new System.Windows.Forms.Button();
             this.btnFacturas = new System.Windows.Forms.Button();
             this.btnReservas = new System.Windows.Forms.Button();
-            this.btnConfig = new System.Windows.Forms.Button();
             this.indicadorSeleccion = new System.Windows.Forms.Panel();
             this.btnTarifas = new System.Windows.Forms.Button();
             this.btnCalendario = new System.Windows.Forms.Button();
@@ -106,6 +106,7 @@
             this.panelBuscadorReservas = new System.Windows.Forms.Panel();
             this.panelCalendario = new System.Windows.Forms.Panel();
             this.panelTarifas = new System.Windows.Forms.Panel();
+            this.panelPromociones = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -134,9 +135,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.panel1.Controls.Add(this.btnPromociones);
             this.panel1.Controls.Add(this.btnFacturas);
             this.panel1.Controls.Add(this.btnReservas);
-            this.panel1.Controls.Add(this.btnConfig);
             this.panel1.Controls.Add(this.indicadorSeleccion);
             this.panel1.Controls.Add(this.btnTarifas);
             this.panel1.Controls.Add(this.btnCalendario);
@@ -146,6 +147,22 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(186, 703);
             this.panel1.TabIndex = 0;
+            // 
+            // btnPromociones
+            // 
+            this.btnPromociones.FlatAppearance.BorderSize = 0;
+            this.btnPromociones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPromociones.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnPromociones.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.btnPromociones.Image = ((System.Drawing.Image)(resources.GetObject("btnPromociones.Image")));
+            this.btnPromociones.Location = new System.Drawing.Point(0, 378);
+            this.btnPromociones.Name = "btnPromociones";
+            this.btnPromociones.Size = new System.Drawing.Size(183, 58);
+            this.btnPromociones.TabIndex = 8;
+            this.btnPromociones.Text = "Promociones";
+            this.btnPromociones.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnPromociones.UseVisualStyleBackColor = true;
+            this.btnPromociones.Click += new System.EventHandler(this.btnPromociones_Click);
             // 
             // btnFacturas
             // 
@@ -178,23 +195,6 @@
             this.btnReservas.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnReservas.UseVisualStyleBackColor = true;
             this.btnReservas.Click += new System.EventHandler(this.btnReservas_Click);
-            // 
-            // btnConfig
-            // 
-            this.btnConfig.FlatAppearance.BorderSize = 0;
-            this.btnConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfig.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnConfig.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.btnConfig.Image = ((System.Drawing.Image)(resources.GetObject("btnConfig.Image")));
-            this.btnConfig.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnConfig.Location = new System.Drawing.Point(0, 642);
-            this.btnConfig.Name = "btnConfig";
-            this.btnConfig.Size = new System.Drawing.Size(186, 58);
-            this.btnConfig.TabIndex = 6;
-            this.btnConfig.Text = "Configuración";
-            this.btnConfig.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnConfig.UseVisualStyleBackColor = true;
-            this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
             // 
             // indicadorSeleccion
             // 
@@ -250,11 +250,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(156)))), ((int)(((byte)(149)))));
-            this.label1.Location = new System.Drawing.Point(60, 106);
+            this.label1.Location = new System.Drawing.Point(38, 102);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 16);
+            this.label1.Size = new System.Drawing.Size(109, 16);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Usuario";
+            this.label1.Text = "Rural Manager";
             // 
             // pictureBox1
             // 
@@ -268,6 +268,7 @@
             // 
             // close
             // 
+            this.close.BackColor = System.Drawing.Color.DodgerBlue;
             this.close.FlatAppearance.BorderSize = 0;
             this.close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.close.Image = global::RuralManager.Properties.Resources.Webp_net_resizeimage__8_;
@@ -275,7 +276,7 @@
             this.close.Name = "close";
             this.close.Size = new System.Drawing.Size(34, 33);
             this.close.TabIndex = 1;
-            this.close.UseVisualStyleBackColor = true;
+            this.close.UseVisualStyleBackColor = false;
             this.close.Click += new System.EventHandler(this.close_Click);
             // 
             // flechaDerecha
@@ -860,9 +861,9 @@
             this.panelFacturas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.panelFacturas.Controls.Add(this.tablaFacturasColumnas);
             this.panelFacturas.Controls.Add(this.tablaFacturas);
-            this.panelFacturas.Location = new System.Drawing.Point(209, 335);
+            this.panelFacturas.Location = new System.Drawing.Point(218, 335);
             this.panelFacturas.Name = "panelFacturas";
-            this.panelFacturas.Size = new System.Drawing.Size(114, 323);
+            this.panelFacturas.Size = new System.Drawing.Size(122, 323);
             this.panelFacturas.TabIndex = 2;
             // 
             // tablaFacturasColumnas
@@ -886,8 +887,9 @@
             this.tablaFacturasColumnas.Controls.Add(this.primeraColFactura, 0, 0);
             this.tablaFacturasColumnas.Location = new System.Drawing.Point(85, 152);
             this.tablaFacturasColumnas.Name = "tablaFacturasColumnas";
-            this.tablaFacturasColumnas.RowCount = 1;
+            this.tablaFacturasColumnas.RowCount = 2;
             this.tablaFacturasColumnas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tablaFacturasColumnas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tablaFacturasColumnas.Size = new System.Drawing.Size(1263, 29);
             this.tablaFacturasColumnas.TabIndex = 1;
             // 
@@ -997,6 +999,7 @@
             this.nuevaReserva.BorderSize = 0;
             this.nuevaReserva.FlatAppearance.BorderSize = 0;
             this.nuevaReserva.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nuevaReserva.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.nuevaReserva.ForeColor = System.Drawing.Color.White;
             this.nuevaReserva.GetSetID = 0;
             this.nuevaReserva.Location = new System.Drawing.Point(884, 113);
@@ -1024,7 +1027,7 @@
             this.panelCalendario.Controls.Add(this.panelMesAnio);
             this.panelCalendario.Location = new System.Drawing.Point(209, 12);
             this.panelCalendario.Name = "panelCalendario";
-            this.panelCalendario.Size = new System.Drawing.Size(169, 302);
+            this.panelCalendario.Size = new System.Drawing.Size(240, 302);
             this.panelCalendario.TabIndex = 1;
             // 
             // panelTarifas
@@ -1034,12 +1037,20 @@
             this.panelTarifas.Size = new System.Drawing.Size(113, 323);
             this.panelTarifas.TabIndex = 23;
             // 
+            // panelPromociones
+            // 
+            this.panelPromociones.Location = new System.Drawing.Point(755, 335);
+            this.panelPromociones.Name = "panelPromociones";
+            this.panelPromociones.Size = new System.Drawing.Size(125, 323);
+            this.panelPromociones.TabIndex = 24;
+            // 
             // panelPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(1569, 703);
+            this.Controls.Add(this.panelPromociones);
             this.Controls.Add(this.panelTarifas);
             this.Controls.Add(this.panelCalendario);
             this.Controls.Add(this.panelBuscadorReservas);
@@ -1163,5 +1174,7 @@
         private Label cajaDia1;
         private Label cajaMes1;
         private Button VerControl;
+        private Button btnPromociones;
+        private Panel panelPromociones;
     }
 }

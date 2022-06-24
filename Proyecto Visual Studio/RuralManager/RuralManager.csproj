@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <PackageReference Include="Aspose.PDF" Version="22.3.0" />
+    <PackageReference Include="Microsoft.Office.Interop.Outlook" Version="15.0.4797.1004" />
     <PackageReference Include="MySql.Data" Version="8.0.28" />
   </ItemGroup>
 

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/y90KUYikxRl3SPo3ytKzNSCoqWrG0jdLdIxL6wkSY95XFaRrp8zNt77Jbn2JuO29O33o51vYZqbtmG7oPH2UA==",
+  "dgSpecHash": "4XZg8Lv4PU2GTNnCpOqgHK4vqRbk6QpzhM+opN7M5UjuxD11+Bb5HGjTtvpHv3vaWr1g2rz1lTepesp6Ny68SA==",
   "success": true,
   "projectFilePath": "C:\\Users\\ivior\\Desktop\\TFG\\RuralManager\\RuralManager\\RuralManager.csproj",
   "expectedPackageFiles": [
@@ -15,6 +15,7 @@
     "C:\\Users\\ivior\\.nuget\\packages\\microsoft.extensions.dependencymodel\\2.0.4\\microsoft.extensions.dependencymodel.2.0.4.nupkg.sha512",
     "C:\\Users\\ivior\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\ivior\\.nuget\\packages\\microsoft.netcore.targets\\1.0.1\\microsoft.netcore.targets.1.0.1.nupkg.sha512",
+    "C:\\Users\\ivior\\.nuget\\packages\\microsoft.office.interop.outlook\\15.0.4797.1004\\microsoft.office.interop.outlook.15.0.4797.1004.nupkg.sha512",
     "C:\\Users\\ivior\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
     "C:\\Users\\ivior\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\ivior\\.nuget\\packages\\mysql.data\\8.0.28\\mysql.data.8.0.28.nupkg.sha512",

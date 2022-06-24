@@ -62,6 +62,7 @@ namespace RuralManager
         public int GetCodigoPostal { get => CodigoPostal; }
         public float GetSetImporte { get => Importe; set => Importe = value; }
         public int GetFactura { get => FacturaAsociada;  }
+        public string GetSetEmail { get => Email; set => Email = value; }
 
         public string[] getDatosReserva()
         {

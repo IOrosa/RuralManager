@@ -64,3 +64,4 @@ C:\Users\ivior\Desktop\TFG\RuralManager\RuralManager\obj\Debug\net6.0-windows\re
 C:\Users\ivior\Desktop\TFG\RuralManager\RuralManager\obj\Debug\net6.0-windows\RuralManager.pdb
 C:\Users\ivior\Desktop\TFG\RuralManager\RuralManager\obj\Debug\net6.0-windows\RuralManager.genruntimeconfig.cache
 C:\Users\ivior\Desktop\TFG\RuralManager\RuralManager\obj\Debug\net6.0-windows\ref\RuralManager.dll
+C:\Users\ivior\Desktop\TFG\RuralManager\RuralManager\bin\Debug\net6.0-windows\Microsoft.Office.Interop.Outlook.dll

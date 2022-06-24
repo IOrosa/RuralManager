@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Globalization;
+using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace RuralManager
 {
@@ -56,6 +57,7 @@ namespace RuralManager
             panelBuscadorReservas.Hide();
             panelFacturas.Hide();
             panelTarifas.Hide();
+            panelPromociones.Hide();
             inicializarTabla();
             aniadirApartamentos();
                        
@@ -103,10 +105,14 @@ namespace RuralManager
             mostrarFacturas(true);                      
         }
 
-        private void btnConfig_Click(object sender, EventArgs e)
+        private void btnPromociones_Click(object sender, EventArgs e)
         {
+            btnCalendario.BackColor = Color.FromArgb(24, 30, 54);
+            mostrarPanel(panelPromociones, btnPromociones);
+            actualizarReservas();
+            mostrarPromociones(true);
 
-            //mostrarPanel(panelConfig, btnConfig);
+            btnPromociones.BackColor = Color.FromArgb(46, 51, 73);
         }
 
         private void close_Click(object sender, EventArgs e)
@@ -122,21 +128,22 @@ namespace RuralManager
             panelBuscadorReservas.Hide();
             panelFacturas.Hide();
             panelTarifas.Hide();
+            panelPromociones.Hide();
 
             mostrarBuscadorReservas(false);
             mostrarTarifas(false);
             mostrarFacturas(false);
+            mostrarPromociones(false);
 
             panel.Show();
             panel.BringToFront();
-
 
             // Eliminar los leave, haciendo un if que compruebe cual es el boton clicado y ponga los otros de color azul
             btnCalendario.BackColor = Color.FromArgb(24, 30, 54);
             btnReservas.BackColor = Color.FromArgb(24, 30, 54);
             btnTarifas.BackColor = Color.FromArgb(24, 30, 54);
             btnFacturas.BackColor = Color.FromArgb(24, 30, 54);
-            btnConfig.BackColor = Color.FromArgb(24, 30, 54);
+            btnPromociones.BackColor = Color.FromArgb(24, 30, 54);
 
             // mover el indicadorseleccion a los valores de panel
             indicadorSeleccion.Height = boton.Height;
@@ -1734,7 +1741,7 @@ namespace RuralManager
         // Funciones para mostrar ventana de búsqueda de reservas
         //
 
-        public Panel crearUIBuscadorReservas()
+        public void crearUIBuscadorReservas()
         {
             Label labelReservas = new Label();
             labelReservas.Text = "Buscar reserva";
@@ -1760,7 +1767,7 @@ namespace RuralManager
 
             panelBuscadorReservas.Controls.Add(lineaNaranja);
 
-            return panelBuscadorReservas;
+            //return panelBuscadorReservas;
 
         }
 
@@ -2629,7 +2636,6 @@ namespace RuralManager
                 if (buscaNombre != null && buscaFechaDe != new DateTime(2000, 1, 1) && buscaFechaHasta != new DateTime(2000, 1, 1))
                 {
                     // Sólo se busca por rango de fechas
-                    //MessageBox.Show("Busca por rango fechas");
                     if (comprobarFechaReservaEnFactura(Facturas.ElementAt(i).GetSetNumeroFactura, buscaFechaDe, buscaFechaHasta))
                     {
                         mostrar = true;
@@ -3541,6 +3547,212 @@ namespace RuralManager
             return indice;
         }
 
-        
+        //
+        // Funciones para mostrar ventana de promociones
+        //
+
+        public void crearUIPromociones()
+        {
+            Label labelReservas = new Label();
+            labelReservas.Text = "Promociones";
+            labelReservas.Font = new Font("Segoe UI", 24.0f);
+            labelReservas.ForeColor = Color.FromArgb(0, 126, 249);
+            labelReservas.Location = new Point(20, 20);
+            labelReservas.AutoSize = true;
+            panelPromociones.Controls.Add(labelReservas);
+
+
+            Label labelBuscar = new Label();
+            labelBuscar.Text = "Buscar por nombre:";
+            labelBuscar.Font = new Font("Segoe UI", 12.0f);
+            labelBuscar.ForeColor = Color.CornflowerBlue;
+            labelBuscar.Location = new Point(50, 80);
+            labelBuscar.AutoSize = true;
+            panelPromociones.Controls.Add(labelBuscar);
+
+            Panel lineaNaranja = new Panel();
+            lineaNaranja.BackColor = Color.DarkOrange;
+            lineaNaranja.Location = new Point(50, 115);
+            lineaNaranja.Size = new Size(800, 4);
+
+            panelPromociones.Controls.Add(lineaNaranja);
+
+        }
+
+        public void mostrarPromociones(bool mostrar)
+        {
+            if (mostrar == true)
+            {
+                List<string> nombreUsuario = new List<string>();
+                List<string> correoUsuario = new List<string>();
+
+                panelPromociones.Size = new Size(1368, 679);
+                panelPromociones.Location = new Point(195, 12);
+                crearUIPromociones();
+                actualizarReservas();
+
+                // Añadir buscador
+                textBoxRedonda buscador = new textBoxRedonda();
+                buscador.BackColor = Color.RoyalBlue;
+                buscador.Location = new Point(250, 80);
+                buscador.Size = new Size(300, 10);
+                buscador.Font = new Font("Segoe UI", 12.0f);
+                buscador.ForeColor = Color.White;
+                buscador.BorderStyle = BorderStyle.None;
+                buscador.TextAlign = HorizontalAlignment.Center;
+                panelPromociones.Controls.Add(buscador);
+
+                // Añadir boton enviar a todos
+                BotonReserva btnEnviarATodos = new BotonReserva();
+                btnEnviarATodos.Size = new Size(300, 60);
+                btnEnviarATodos.Location = new Point(950, 350);
+                btnEnviarATodos.Text = "Enviar a todos los usuarios";
+                btnEnviarATodos.ForeColor = Color.White;
+                btnEnviarATodos.Font = new Font("Segoe UI", 12.0f);
+                btnEnviarATodos.BackColor = Color.RoyalBlue;
+                panelPromociones.Controls.Add(btnEnviarATodos);
+
+                btnEnviarATodos.Click += (sender, e) =>
+                {
+                    string correos = "";
+
+                    // bucle añadiendo todos con un ;
+
+                    foreach(string correo in correoUsuario)
+                    {
+                        correos += correo + ";";
+                    }
+
+                    System.Diagnostics.Process.Start(new ProcessStartInfo("mailto:" + correos) { UseShellExecute = true });
+                };
+
+
+                // Añadir tabla de resultados
+                TableLayoutPanel tablaPromociones = new TableLayoutPanel();
+                tablaPromociones.Size = new Size(800, 500);
+                tablaPromociones.Location = new Point(50, 130);
+                tablaPromociones.BackColor = Color.FromArgb(24, 30, 54);
+
+                tablaPromociones.BorderStyle = BorderStyle.FixedSingle;
+                tablaPromociones.ColumnCount = 1;
+                tablaPromociones.RowCount = 0;
+                tablaPromociones.AutoScroll = false;
+                tablaPromociones.HorizontalScroll.Enabled = false;
+                tablaPromociones.HorizontalScroll.Visible = false;
+                tablaPromociones.HorizontalScroll.Maximum = 0;
+                tablaPromociones.AutoScroll = true;
+
+                buscador.TextChanged += (sender, e) =>
+                {
+                    nombreUsuario.Clear();
+                    correoUsuario.Clear();
+
+                    tablaPromociones.Controls.Clear();
+                    tablaPromociones.RowCount = 0;
+
+                    for (int i = 0; i < Reservas.Count; i++)
+                    {
+                        // Comprobar que el nombre y el correo no hayan sido ya añadidos
+                        // Si no lo son, añadir a los resultados
+                        string nombrecompleto = Reservas.ElementAt(i).GetSetNombre + " " + Reservas.ElementAt(i).GetSetApellidos;
+                        string correo = Reservas.ElementAt(i).GetSetEmail;
+
+
+                        if (nombrecompleto.Contains(buscador.Text))
+                        {
+                            if(!nombreUsuario.Contains(nombrecompleto) || !correoUsuario.Contains(correo))
+                            {
+                                // Si no tenemos el correo o el nombre del siguiente, se añade
+
+                                nombreUsuario.Add(nombrecompleto);
+                                correoUsuario.Add(correo);
+
+                                Panel nuevaFila = crearNuevaFilaUsuario(i, false);
+
+                                tablaPromociones.RowCount += 1;
+                                tablaPromociones.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+                                tablaPromociones.Controls.Add(nuevaFila, 0, tablaPromociones.RowCount - 1);
+                            }                            
+                        }
+                    }                  
+
+                };
+
+                // Para activar el cambio de texto y que se actualize la tabla
+                string texto = buscador.Text;
+                buscador.Text = "123456";
+                buscador.Text = texto;
+
+                panelPromociones.Controls.Add(tablaPromociones);
+
+                panelPromociones.Show();
+            }
+            else
+            {
+                panelPromociones.Controls.Clear();
+                panelPromociones.Hide();
+            }
+
+
+
+        }
+
+        public Panel crearNuevaFilaUsuario(int indiceReserva, bool marcarAFacturar)
+        {
+            Panel nuevaFila = new Panel();
+            nuevaFila.Size = new Size(750, 25);
+            nuevaFila.BackColor = Color.FromArgb(150, 0, 126, 249);
+            nuevaFila.BorderStyle = BorderStyle.FixedSingle;
+
+            Label nombreUsuario = new Label();
+            nombreUsuario.Font = new Font("Segoe UI", 12.0f);
+            nombreUsuario.Location = new Point(0, 0);
+            nombreUsuario.AutoSize = true;
+            nombreUsuario.ForeColor = Color.White;
+            nombreUsuario.BackColor = Color.FromArgb(0, 0, 126, 249);
+            nombreUsuario.Text = Reservas.ElementAt(indiceReserva).GetSetNombre + " " + Reservas.ElementAt(indiceReserva).GetSetApellidos;
+            nuevaFila.Controls.Add(nombreUsuario);
+
+            Label correoUsuario = new Label();
+            correoUsuario.Font = new Font("Segoe UI", 12.0f);
+            correoUsuario.Location = new Point(320, 0);
+            correoUsuario.AutoSize = true;
+            correoUsuario.ForeColor = Color.White;
+            correoUsuario.BackColor = Color.FromArgb(0, 0, 126, 249);
+            correoUsuario.Text = Reservas.ElementAt(indiceReserva).GetSetEmail;
+            nuevaFila.Controls.Add(correoUsuario);
+
+
+            nuevaFila.Click += clicarUsuario;
+            nombreUsuario.Click += clicarUsuario;
+            correoUsuario.Click += clicarUsuario;
+
+            nuevaFila.MouseHover += mouseHoverUsuario;
+            nombreUsuario.MouseHover += mouseHoverUsuario;
+            correoUsuario.MouseHover += mouseHoverUsuario;
+
+            nuevaFila.MouseLeave += mouseLeaveUsuario;
+            nombreUsuario.MouseLeave += mouseLeaveUsuario;
+            correoUsuario.MouseLeave += mouseLeaveUsuario;
+
+            void clicarUsuario(object sender, EventArgs e)
+            {
+                // MAILTO
+                System.Diagnostics.Process.Start(new ProcessStartInfo("mailto:" + correoUsuario.Text) { UseShellExecute = true });                
+            };
+
+            void mouseHoverUsuario(object sender, EventArgs e)
+            {
+                nuevaFila.BackColor = Color.FromArgb(255, 0, 126, 249);
+            };
+
+            void mouseLeaveUsuario(object sender, EventArgs e)
+            {
+                nuevaFila.BackColor = Color.FromArgb(150, 0, 126, 249);
+            };
+
+
+            return nuevaFila;
+        }
     }
 }
